@@ -17,16 +17,13 @@ import org.starrier.imperator.content.redis.mq.Publish;
 @RestController
 public class RedissionController {
 
-    @Autowired
-    private RedissonClient redissonClient;
-
-    @Autowired
-    private Publish publish;
-
     private static final String LOCK = "test";
     private static final String SUCCESS = "success";
     private static final String FAILED = "failed";
-
+    @Autowired
+    private RedissonClient redissonClient;
+    @Autowired
+    private Publish publish;
 
     /**
      * 如果只有一个线程来访问，那么在rLock.tryLock() 这个方法就会阻塞，等锁释放然后再继续下面的操作，

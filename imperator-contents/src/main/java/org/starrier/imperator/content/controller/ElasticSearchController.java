@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.starrier.common.result.Result;
-import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.article.Article;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;

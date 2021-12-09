@@ -25,8 +25,6 @@ public class Account {
 
     /**
      * 重置时间
-     *
-     *
      */
     private static final int RESET_TIME = 30;
 
@@ -63,7 +61,6 @@ public class Account {
     private LinkedList<Long> times;
 
     private boolean lock;
-
 
 
 }

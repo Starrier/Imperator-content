@@ -9,11 +9,6 @@ import static org.starrier.imperator.content.constant.Constant.DIGITS_BASE_64;
 public class ShortUrlService {
 
 
-    public String getShortUrlByNumberDigits() {
-
-        return null;
-    }
-
     /**
      * 将十进制的数字转换为指定进制的字符串
      *
@@ -63,6 +58,11 @@ public class ShortUrlService {
             base *= seed;
         }
         return result;
+    }
+
+    public String getShortUrlByNumberDigits() {
+
+        return null;
     }
 
 

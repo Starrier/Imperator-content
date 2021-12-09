@@ -10,7 +10,7 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.modules.junit4.PowerMockRunnerDelegate;
-import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.article.Article;
 import org.starrier.imperator.content.service.ArticleService;
 
 /**

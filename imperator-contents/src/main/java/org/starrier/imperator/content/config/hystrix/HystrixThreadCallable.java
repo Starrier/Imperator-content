@@ -3,7 +3,7 @@ package org.starrier.imperator.content.config.hystrix;
 import lombok.SneakyThrows;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
-import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.article.Article;
 
 import java.util.concurrent.Callable;
 

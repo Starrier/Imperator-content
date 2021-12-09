@@ -27,7 +27,7 @@ import java.util.List;
 public class RedisController {
 
     @Autowired
-    private RedisTemplate<String,String> redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     @PostMapping("/lua")
     public ResponseEntity<Object> redisLuaTest(@RequestBody RedisLua redisLua) {

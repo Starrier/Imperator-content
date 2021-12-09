@@ -1,4 +1,4 @@
-package org.starrier.imperator.content.entity;
+package org.starrier.imperator.content.entity.article;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

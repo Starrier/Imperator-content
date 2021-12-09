@@ -1,4 +1,4 @@
-package org.starrier.imperator.content.entity;
+package org.starrier.imperator.content.entity.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +22,6 @@ public class ArticleVote {
     @NotBlank(message = "")
     private Long articleId;
 
-    @NotBlank(message = "")
+    @NotBlank(message = "userId not allow blank")
     private Long userId;
 }

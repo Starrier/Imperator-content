@@ -76,6 +76,25 @@ import static org.starrier.imperator.content.component.constant.ProfileConstant.
  * <p>
  * 设置触发时间
  * 触发器名称
+ * <p>
+ * 定义 Quartz 调度工厂
+ * <p>
+ * 用于 Quartz 集群， QuartzScheduler 启动时更新已存在的 Job
+ * 延迟启动，应用启动 1s 后
+ * 注册触发器
+ * <p>
+ * 配置定时任务
+ * <p>
+ * 是否并发执行  ？ true: 当前任务未执行完成，继续执行下一个 false : 等待上一个任务完成，再继续执行下一个
+ * 设置任务名称
+ * 设置任务分组，可持久化（多任务时使用）
+ * 需要执行的对象
+ * 设置需要执行的方法
+ * <p>
+ * 配置定时任务的触发器，也就是什么时候出发执行定时任务
+ * <p>
+ * 设置触发时间
+ * 触发器名称
  *//*
 
 @Configuration

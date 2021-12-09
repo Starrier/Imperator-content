@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.starrier.common.result.Result;
 import org.starrier.common.result.ResultCode;
 import org.starrier.imperator.content.annotation.RequestLimit;
-import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.article.Article;
 import org.starrier.imperator.content.service.ArticleService;
 
 import java.sql.Timestamp;
