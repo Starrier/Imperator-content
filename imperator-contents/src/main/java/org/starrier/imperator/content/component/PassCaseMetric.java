@@ -24,19 +24,18 @@ import static org.starrier.imperator.content.component.constant.ProfileConstant.
 @Component
 public class PassCaseMetric {
 
-    private List<Tag> init() {
-        ArrayList<Tag> list = Lists.newArrayListWithExpectedSize(ONE);
-        list.add(new ImmutableTag("service", "demo"));
-        return list;
-    }
-
     private final AtomicInteger atomicInteger = new AtomicInteger(0);
-
     private Gauge passCaseGauge = Gauge.builder("pass.cases.gauge", atomicInteger, AtomicInteger::get)
             .tag("service", "demo")
             .description("pass cases gauge of demo")
             .register(new SimpleMeterRegistry());
     private AtomicInteger passCases = Metrics.gauge("pass.cases.gauge.value", init(), atomicInteger);
+
+    private List<Tag> init() {
+        ArrayList<Tag> list = Lists.newArrayListWithExpectedSize(ONE);
+        list.add(new ImmutableTag("service", "demo"));
+        return list;
+    }
 
     public void handleMetrics() {
         if (0 == (System.currentTimeMillis() % 2)) {

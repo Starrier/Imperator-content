@@ -43,9 +43,8 @@ import static org.starrier.imperator.content.component.constant.ProfileConstant.
 @EnableConfigurationProperties(ConfigSupportProperties.class)
 public class ConfigSupportConfiguration implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
 
-    private List<PropertySourceLocator> propertySourceLocators = Collections.EMPTY_LIST;
-
     private final ConfigSupportProperties configSupportProperties;
+    private List<PropertySourceLocator> propertySourceLocators = Collections.EMPTY_LIST;
 
     public ConfigSupportConfiguration(List<PropertySourceLocator> propertySourceLocators, ConfigSupportProperties configSupportProperties) {
         this.propertySourceLocators = propertySourceLocators;

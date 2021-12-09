@@ -1,12 +1,12 @@
-package org.starrier.imperator.content.service;
+package org.starrier.imperator.content.entity.user.service;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Service;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,7 +42,7 @@ public class AccountRepresentService {
      */
     public Boolean checkIn(Long userId) {
         String today = LocalDate.now().format(DATE_TIME_FORMATTER);
-        if(isCheckIn(userId, today)){
+        if (isCheckIn(userId, today)) {
             return false;
         }
         stringRedisTemplate.opsForValue().setBit(getCheckInKey(today), userId, true);
@@ -63,12 +63,12 @@ public class AccountRepresentService {
         LocalDate endLocalDate = LocalDate.parse(endDate, DATE_TIME_FORMATTER);
         AtomicLong count = new AtomicLong(0);
         long distance = Period.between(startLocalDate, endLocalDate).get(ChronoUnit.DAYS);
-        if(distance < 0)
+        if (distance < 0)
             return count.get();
         Stream.iterate(startLocalDate, d -> d.plusDays(1)).limit(distance + 1).forEach((LocalDate date) -> {
             Boolean isCheckIn = stringRedisTemplate.opsForValue().
                     getBit(getCheckInKey(date.format(DATE_TIME_FORMATTER)), userId);
-            if(isCheckIn)
+            if (isCheckIn)
                 count.incrementAndGet();
         });
         return count.get();
@@ -82,7 +82,7 @@ public class AccountRepresentService {
      * @return
      */
     public Long countDateCheckIn(String date) {
-        byte [] key = getCheckInKey(date).getBytes();
+        byte[] key = getCheckInKey(date).getBytes();
         Long result = stringRedisTemplate.execute(new RedisCallback<Long>() {
             @Nullable
             @Override
@@ -108,16 +108,17 @@ public class AccountRepresentService {
 
     /**
      * 更新用户连续签到天数：+1
+     *
      * @param userId 用户唯一标识 Id
      */
     public void updateContinuousCheckIn(Long userId) {
         String key = getContinuousCheckInKey(userId);
         String value = stringRedisTemplate.opsForValue().get(key);
         long count = 0;
-        if(value != null){
+        if (value != null) {
             count = Long.parseLong(value);
         }
-        count ++;
+        count++;
         stringRedisTemplate.opsForValue().set(key, String.valueOf(count));
         //设置第二天过期
         stringRedisTemplate.execute(new RedisCallback<Void>() {

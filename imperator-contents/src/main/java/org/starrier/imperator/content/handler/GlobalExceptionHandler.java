@@ -29,13 +29,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ClassCastException.class)
     public Result ClassCastException(ClassCastException ex) {
         logger.error(ex.getMessage(), ex);
-        return Result.error(ResultCode.ERROR,ex.getMessage());
+        return Result.error(ResultCode.ERROR, ex.getMessage());
     }
 
     @ExceptionHandler(IOException.class)
     public Result IOException(IOException ex) {
         logger.error(ex.getMessage(), ex);
-        return Result.error(ResultCode.ERROR,ex.getMessage());
+        return Result.error(ResultCode.ERROR, ex.getMessage());
     }
 
    /* @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
@@ -55,13 +55,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public Result RuntimeException(RuntimeException ex) {
         logger.error(ex.getMessage(), ex);
-        return Result.error(ResultCode.ERROR,ex.getMessage());
+        return Result.error(ResultCode.ERROR, ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public Result exception(Exception ex) {
         logger.error(ex.getMessage(), ex);
-        return Result.error(ResultCode.ERROR,ex.getMessage());
+        return Result.error(ResultCode.ERROR, ex.getMessage());
     }
 
 }

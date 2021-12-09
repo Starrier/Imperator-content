@@ -11,7 +11,7 @@ import org.starrier.imperator.content.dto.person.Account;
 public class LoginService {
 
 
-    public Boolean loginService(Account account){
+    public Boolean loginService(Account account) {
 
         // 判断当前用户是否存在
 

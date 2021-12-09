@@ -27,10 +27,9 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RequestLimitIntercept extends HandlerInterceptorAdapter {
 
+    private final RedisTemplate redisTemplate;
     @Value("${token.value.validate.param:token}")
     private String tokenValidateParam;
-
-    private final RedisTemplate redisTemplate;
 
     public RequestLimitIntercept(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
@@ -116,8 +115,8 @@ public class RequestLimitIntercept extends HandlerInterceptorAdapter {
     private void responseOut(HttpServletResponse response, Result result) throws IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-       try(PrintWriter out =  response.getWriter()){
-           out.append(JSONObject.toJSONString(result));
-       }
+        try (PrintWriter out = response.getWriter()) {
+            out.append(JSONObject.toJSONString(result));
+        }
     }
 }

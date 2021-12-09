@@ -26,13 +26,13 @@ public class SpringCloudHystrixConcurrencyStrategy extends HystrixConcurrencyStr
 
     private HystrixConcurrencyStrategy delegateHystrixConcurrencyStrategy;
 
+    public SpringCloudHystrixConcurrencyStrategy() {
+        init();
+    }
+
     @Override
     public <T> Callable<T> wrapCallable(Callable<T> callable) {
         return new HystrixThreadCallable<>(callable, RequestContextHolder.getRequestAttributes(), HystrixThreadLocal.threadLocal.get());
-    }
-
-    public SpringCloudHystrixConcurrencyStrategy() {
-        init();
     }
 
     @SneakyThrows(Exception.class)

@@ -19,17 +19,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 @EnableAsync
 public class ThreadPoolConfig {
 
-    @Value("${thread.pool.queue.capacity.size:200}")
-    private Integer threadPoolQueueCapacitySize;
-
-    @Value("${thread.pool.thread.keep.alive.seconds:60}")
-    private Integer threadPoolThreadKeepAliveSeconds;
-
     /**
      * 根据 cpu 的数量动态的配置核心线程数和最大线程数
      */
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
-
     /**
      * 核心线程数 = CPU核心数 + 1
      */
@@ -38,7 +31,10 @@ public class ThreadPoolConfig {
      * 线程池最大线程数 = CPU核心数 * 2 + 1
      */
     private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
-
+    @Value("${thread.pool.queue.capacity.size:200}")
+    private Integer threadPoolQueueCapacitySize;
+    @Value("${thread.pool.thread.keep.alive.seconds:60}")
+    private Integer threadPoolThreadKeepAliveSeconds;
 
     /**
      * 1. Set the number of core threads

@@ -33,6 +33,43 @@ public class ReadBinLogService implements ApplicationRunner {
     @Value("${canal.instance:example}")
     private String instance;
 
+    /**
+     * 解析具体一条Binlog消息的数据
+     *
+     * @param dbName    当前操作所属数据库名称
+     * @param tableName 当前操作所属表名称
+     * @param eventType 当前操作类型（新增、修改、删除）
+     */
+    private static void dataDetails(List<CanalEntry.Column> beforeColumns,
+                                    List<CanalEntry.Column> afterColumns,
+                                    String dbName,
+                                    String tableName,
+                                    CanalEntry.EventType eventType,
+                                    long timestamp) {
+
+        System.out.println("数据库：" + dbName);
+        System.out.println("表名：" + tableName);
+        System.out.println("操作类型:" + eventType);
+        if (CanalEntry.EventType.INSERT.equals(eventType)) {
+            System.out.println("新增数据：");
+            printColumn(afterColumns);
+        } else if (CanalEntry.EventType.DELETE.equals(eventType)) {
+            System.out.println("删除数据：");
+            printColumn(beforeColumns);
+        } else {
+            System.out.println("更新数据：更新前数据--");
+            printColumn(beforeColumns);
+            System.out.println("更新数据：更新后数据--");
+            printColumn(afterColumns);
+        }
+        System.out.println("操作时间：" + timestamp);
+    }
+
+    private static void printColumn(List<CanalEntry.Column> columns) {
+        for (CanalEntry.Column column : columns) {
+            System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
+        }
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -95,44 +132,6 @@ public class ReadBinLogService implements ApplicationRunner {
                     System.out.println("-------------------------------------------------------------");
                 }
             }
-        }
-    }
-
-    /**
-     * 解析具体一条Binlog消息的数据
-     *
-     * @param dbName    当前操作所属数据库名称
-     * @param tableName 当前操作所属表名称
-     * @param eventType 当前操作类型（新增、修改、删除）
-     */
-    private static void dataDetails(List<CanalEntry.Column> beforeColumns,
-                                    List<CanalEntry.Column> afterColumns,
-                                    String dbName,
-                                    String tableName,
-                                    CanalEntry.EventType eventType,
-                                    long timestamp) {
-
-        System.out.println("数据库：" + dbName);
-        System.out.println("表名：" + tableName);
-        System.out.println("操作类型:" + eventType);
-        if (CanalEntry.EventType.INSERT.equals(eventType)) {
-            System.out.println("新增数据：");
-            printColumn(afterColumns);
-        } else if (CanalEntry.EventType.DELETE.equals(eventType)) {
-            System.out.println("删除数据：");
-            printColumn(beforeColumns);
-        } else {
-            System.out.println("更新数据：更新前数据--");
-            printColumn(beforeColumns);
-            System.out.println("更新数据：更新后数据--");
-            printColumn(afterColumns);
-        }
-        System.out.println("操作时间：" + timestamp);
-    }
-
-    private static void printColumn(List<CanalEntry.Column> columns) {
-        for (CanalEntry.Column column : columns) {
-            System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
         }
     }
 

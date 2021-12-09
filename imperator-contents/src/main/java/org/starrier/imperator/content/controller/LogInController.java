@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.starrier.common.result.Result;
 import org.starrier.imperator.content.dto.person.Account;
-import org.starrier.imperator.content.service.AccountRepresentService;
-import org.starrier.imperator.content.service.AccountServiceApplication;
+import org.starrier.imperator.content.entity.user.service.AccountRepresentService;
+import org.starrier.imperator.content.entity.user.service.AccountServiceApplication;
 
 /**
  * @author starrier
@@ -24,15 +24,17 @@ public class LogInController {
 
 
     @PostMapping("/check-in")
-    public Result checkIn(@RequestBody Account account){
+    public Result checkIn(@RequestBody Account account) {
 
         Boolean checkIn = accountRepresentService.checkIn(Long.valueOf(account.getId()));
 
         return Result.success(checkIn);
     }
 
-
-
+    @PostMapping
+    public Result login(@RequestBody Account account){
+        return Result.success(accountServiceApplication.login(account));
+    }
 
 
 }

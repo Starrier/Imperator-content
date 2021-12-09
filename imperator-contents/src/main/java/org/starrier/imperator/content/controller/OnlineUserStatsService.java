@@ -7,8 +7,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author starrier
@@ -17,8 +15,7 @@ import java.util.List;
 @Component
 public class OnlineUserStatsService {
 
-    private static final String ONLINE_USERS = "onlie_users";
-
+    private static final String ONLINE_USERS = "online_users";
 
     private final StringRedisTemplate stringRedisTemplate;
 
@@ -28,8 +25,10 @@ public class OnlineUserStatsService {
 
     /**
      * 添加用户在线信息
-     * @param userId
-     * @return
+     * <p></p>
+     *
+     * @param userId 用户 id
+     * @return 是否添加信息成功
      */
     public Boolean online(Integer userId) {
         return this.stringRedisTemplate.opsForZSet().add(ONLINE_USERS, userId.toString(), Instant.now().toEpochMilli());
@@ -37,8 +36,10 @@ public class OnlineUserStatsService {
 
     /**
      * 获取一定时间内，在线的用户数量
-     * @param duration
-     * @return
+     * <p></p>
+     *
+     * @param duration 指定的时间范围
+     * @return 用户在线数量
      */
     public Long count(Duration duration) {
         LocalDateTime now = LocalDateTime.now();
@@ -49,7 +50,9 @@ public class OnlineUserStatsService {
 
     /**
      * 获取所有在线过的用户数量，不论时间
-     * @return
+     * <p></p>
+     *
+     * @return 所有在线过的用户数量
      */
     public Long count() {
         return this.stringRedisTemplate.opsForZSet().zCard(ONLINE_USERS);
@@ -57,6 +60,8 @@ public class OnlineUserStatsService {
 
     /**
      * 清除超过一定时间没在线的用户数据
+     * <p/>
+     *
      * @param duration
      * @return
      */
@@ -64,7 +69,6 @@ public class OnlineUserStatsService {
         return this.stringRedisTemplate.opsForZSet().removeRangeByScore(ONLINE_USERS, 0,
                 LocalDateTime.now().minus(duration).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
-
 
 
 }

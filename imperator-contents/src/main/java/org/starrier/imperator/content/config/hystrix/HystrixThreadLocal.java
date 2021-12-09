@@ -2,7 +2,7 @@ package org.starrier.imperator.content.config.hystrix;
 
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.article.Article;
 
 /**
  * @author Starrier

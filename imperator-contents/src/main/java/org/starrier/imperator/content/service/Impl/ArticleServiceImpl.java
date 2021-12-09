@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.starrier.common.result.Result;
 import org.starrier.common.result.ResultCode;
-import org.starrier.imperator.content.entity.Article;
-import org.starrier.imperator.content.entity.ArticleVote;
+import org.starrier.imperator.content.entity.article.Article;
+import org.starrier.imperator.content.entity.article.ArticleVote;
 import org.starrier.imperator.content.repository.dao.ArticleDao;
 import org.starrier.imperator.content.service.ArticleService;
 

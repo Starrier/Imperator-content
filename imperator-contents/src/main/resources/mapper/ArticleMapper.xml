@@ -4,7 +4,7 @@
 <!-- 将namespace的值设置为DAO类对应的路径 -->
 <mapper namespace="org.starrier.imperator.content.repository.mapper.ArticleMapper">
     <!-- 目的：为DAO接口方法提供sql语句配置 -->
-    <resultMap id="article" type="org.starrier.imperator.content.entity.Article.">
+    <resultMap id="article" type="org.starrier.imperator.content.entity.article.Article.">
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
@@ -15,8 +15,8 @@
     </resultMap>
 
     <insert id="insertArticle" parameterType="Article" useGeneratedKeys="true" keyProperty="id"><![CDATA[
-       insert into article (title, content, author, category, summary)
-       values (#{title}, #{content}, #{author}, #{category}, #{summary})
+        insert into article (title, content, author, category, summary)
+        values (#{title}, #{content}, #{author}, #{category}, #{summary})
         ]]></insert>
 
     <delete id="deleteById" parameterType="Article">
@@ -94,7 +94,7 @@
         SELECT author
         FROM article
     </select>
-    <select id="getArticlesByKeyword" resultType="org.starrier.imperator.content.entity.Article">
+    <select id="getArticlesByKeyword" resultType="org.starrier.imperator.content.entity.article.Article">
 
     </select>
 </mapper>

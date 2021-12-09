@@ -1,7 +1,7 @@
 package org.starrier.imperator.content.service;
 
-import org.starrier.imperator.content.entity.Article;
-import org.starrier.imperator.content.entity.ArticleVote;
+import org.starrier.imperator.content.entity.article.Article;
+import org.starrier.imperator.content.entity.article.ArticleVote;
 
 import java.util.List;
 import java.util.Optional;

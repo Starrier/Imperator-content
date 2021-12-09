@@ -2,14 +2,12 @@
 
 ## 环境要求
 
->推荐使用 Docker 开发环境。
-
+> 推荐使用 Docker 开发环境。
 
 - Redis
 - Consul
 - MySQL
 - Canal
-
 
 ### Docker 环境搭建
 

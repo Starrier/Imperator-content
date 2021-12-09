@@ -67,17 +67,13 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
 
     private static final Set<String> PROXYED_SET = new HashSet<>();
     private static final FailureHandler DEFAULT_FAIL_HANDLER = new DefaultFailureHandlerImpl();
-
-    private MethodInterceptor interceptor;
-
     private final String applicationId;
     private final String txServiceGroup;
     private final int mode;
     private final boolean disableGlobalTransaction =
             ConfigurationFactory.getInstance().getBoolean("service.disableGlobalTransaction", false);
-
     private final FailureHandler failureHandlerHook;
-
+    private MethodInterceptor interceptor;
     private ApplicationContext applicationContext;
 
     /**
