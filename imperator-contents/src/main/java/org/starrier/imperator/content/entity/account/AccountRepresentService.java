@@ -1,4 +1,4 @@
-package org.starrier.imperator.content.entity.user.service;
+package org.starrier.imperator.content.entity.account;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.dao.DataAccessException;

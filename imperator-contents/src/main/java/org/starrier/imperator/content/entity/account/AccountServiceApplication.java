@@ -1,4 +1,4 @@
-package org.starrier.imperator.content.entity.user.service;
+package org.starrier.imperator.content.entity.account;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;

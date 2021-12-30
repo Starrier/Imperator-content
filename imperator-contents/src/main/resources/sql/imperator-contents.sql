@@ -1,3 +1,4 @@
+
 CREATE TABLE article
 (
     id       int NOT NULL AUTO_INCREMENT,

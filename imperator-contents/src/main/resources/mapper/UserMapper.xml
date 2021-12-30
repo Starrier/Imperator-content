@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 将namespace的值设置为DAO类对应的路径 -->
+<mapper namespace="org.starrier.imperator.content.repository.mapper.UserMapper">
+
+    <!-- 目的：为DAO接口方法提供sql语句配置 -->
+    <resultMap id="article" type="org.starrier.imperator.content.entity.user.domain.User.">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="nickname" column="nickname"/>
+        <result property="weChatId" column="weChatId"/>
+        <result property="cityName" column="cityName"/>
+        <result property="areaName" column="areaName"/>
+        <result property="age" column="age" jdbcType="BIGINT"/>
+        <result property="sex" column="sex" jdbcType="BIGINT"/>
+    </resultMap>
+</mapper>

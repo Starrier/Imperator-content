@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.starrier.common.result.Result;
 import org.starrier.imperator.content.dto.person.Account;
-import org.starrier.imperator.content.entity.user.service.AccountRepresentService;
-import org.starrier.imperator.content.entity.user.service.AccountServiceApplication;
+import org.starrier.imperator.content.entity.account.AccountRepresentService;
+import org.starrier.imperator.content.entity.account.AccountServiceApplication;
 
 /**
  * @author starrier
